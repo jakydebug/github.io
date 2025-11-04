@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>辉哥牌猪脚饭 - 舌尖上的美味</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #CB6635;
+            --secondary: #E89E41;
+            --light: #F4E3CF;
+            --dark: #7B5C42;
+            --text: #333333;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Noto Sans SC', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f9f3e9, #fff9f0);
+            color: var(--text);
+            min-height: 100vh;
+            background-attachment: fixed;
+        }
+        
+        header {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        
+        .logo-icon {
+            font-size: 2.2rem;
+        }
+        
+        nav ul {
+            list-style-type: none;
+            display: flex;
+            gap: 30px;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 5px 10px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+        }
+        
+        nav a:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+        
+        .hero {
+            background: url('https://images.unsplash.com/photo-1634034379073-f689b460a3fc?ixlib=rb-4.0.3') no-repeat center center/cover;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            position: relative;
+            border-radius: 0 0 20px 20px;
+            overflow: hidden;
+            margin: 0 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(203, 102, 53, 0.8), rgba(232, 158, 65, 0.7));
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            max-width: 600px;
+            margin-left: 50px;
+            color: white;
+        }
+        
+        .hero h2 {
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: white;
+            color: var(--primary);
+            padding: 15px 35px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn:hover {
+            background: var(--light);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .slogan {
+            text-align: center;
+            padding: 60px 0 40px;
+        }
+        
+        .slogan h3 {
+            font-size: 2.2rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .slogan p {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: var(--text);
+        }
+        
+        .highlight {
+            background: linear-gradient(to right, #FFE8D6, #FFF1E6);
+            padding: 40px 0;
+            margin: 40px 0;
+            border-radius: 20px;
+            border: 2px solid var(--light);
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 40px;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            width: 120px;
+            height: 4px;
+            background: var(--secondary);
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+        
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 20px;
+        }
+        
+        .product-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+        
+        .product-img {
+            height: 250px;
+            overflow: hidden;
+        }
+        
+        .product-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .product-card:hover .product-img img {
+            transform: scale(1.1);
+        }
+        
+        .product-info {
+            padding: 20px;
+        }
+        
+        .product-info h4 {
+            font-size: 1.6rem;
+            color: var(--dark);
+            margin-bottom: 10px;
+        }
+        
+        .product-info p {
+            margin-bottom: 15px;
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        .price {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .models-section {
+            background: url('https://images.unsplash.com/photo-1556911220-e15b29be8c8f?ixlib=rb-4.0.3') no-repeat center center/cover;
+            padding: 80px 0;
+            position: relative;
+        }
+        
+        .models-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+        }
+        
+        .models-content {
+            position: relative;
+            z-index: 2;
+            color: white;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .models-content h3 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+        }
+        
+        .models-content p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+        
+        .testimonials {
+            padding: 60px 0;
+            background: #f8f7f4;
+        }
+        
+        .testimonial-cards {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            padding: 20px;
+        }
+        
+        .testimonial-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            max-width: 350px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            position: relative;
+        }
+        
+        .testimonial-card::before {
+            content: """;
+            position: absolute;
+            top: 15px;
+            left: 20px;
+            font-size: 4rem;
+            font-family: Georgia, serif;
+            color: var(--light);
+            opacity: 0.7;
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .customer-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .customer-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--secondary);
+        }
+        
+        .customer-details h4 {
+            color: var(--dark);
+            margin-bottom: 5px;
+        }
+        
+        .customer-details p {
+            color: #777;
+        }
+        
+        footer {
+            background: linear-gradient(to right, var(--dark), #524636);
+            color: white;
+            padding: 50px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-section h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--secondary);
+        }
+        
+        .contact-info {
+            list-style: none;
+        }
+        
+        .contact-info li {
+            margin-bottom: 15px;
+            display: flex;
+            gap: 10px;
+        }
+        
+        .opening-hours {
+            list-style: none;
+        }
+        
+        .opening-hours li {
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            width: 40px;
+            height: 40px;
+            background: var(--light);
+            border-radius: 50%;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            color: var(--primary);
+            font-size: 1.1rem;
+        }
+        
+        .social-links a:hover {
+            background: var(--secondary);
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: #ccc;
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            nav ul {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .hero {
+                height: 400px;
+                text-align: center;
+            }
+            
+            .hero-content {
+                margin: 0 auto;
+                padding: 0 20px;
+            }
+            
+            .hero h2 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 顶部导航 -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <span class="logo-icon"><i class="fas fa-utensils"></i></span>
+                    <h1>辉哥牌猪脚饭</h1>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#">首页</a></li>
+                        <li><a href="#">菜品介绍</a></li>
+                        <li><a href="#">关于我们</a></li>
+                        <li><a href="#">门店地址</a></li>
+                        <li><a href="#">在线预定</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    
+    <!-- 主视觉区域 -->
+    <section class="hero">
+        <div class="hero-content">
+            <h2>一口软糯，回味无穷</h2>
+            <p>辉哥牌猪脚饭，传承匠心工艺，精选上等原料，经过12小时文火慢炖，肉质酥软入味，胶质丰富，唇齿留香的美味享受</p>
+            <a href="#" class="btn">立即订购</a>
+        </div>
+    </section>
+    
+    <!-- 品牌标语 -->
+    <section class="slogan">
+        <div class="container">
+            <h3>为何选择辉哥牌猪脚饭</h3>
+            <p>我们坚持传统工艺与现代口味相结合，每一份猪脚饭都来自精心挑选的前蹄，富含胶质而不油腻，色泽红润诱人，入口即化。坚持使用天然香料，无任何添加剂，让您吃得开心，吃得放心。</p>
+        </div>
+    </section>
+    
+    <!-- 特色菜品 -->
+    <section class="highlight">
+        <div class="container">
+            <h3 class="section-title">招牌菜品</h3>
+            <div class="products">
+                <!-- 菜品1 -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1633945274866-cb6c0af16b6c?ixlib=rb-4.0.3" alt="经典卤猪脚饭">
+                    </div>
+                    <div class="product-info">
+                        <h4>经典卤猪脚饭</h4>
+                        <p>秘制卤汁搭配文火慢炖猪脚，配菜有卤蛋、青菜和酸菜，味道醇厚，肥而不腻。</p>
+                        <div class="price">¥38</div>
+                    </div>
+                </div>
+                
+                <!-- 菜品2 -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1543253687-c931c8e01820?ixlib=rb-4.0.3" alt="香辣猪脚饭">
+                    </div>
+                    <div class="product-info">
+                        <h4>香辣猪脚饭</h4>
+                        <p>精选湖南辣椒与猪脚完美融合，香辣过瘾，绝对满足你的味蕾挑战，一碗过瘾。</p>
+                        <div class="price">¥42</div>
+                    </div>
+                </div>
+                
+                <!-- 菜品3 -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1620073574046-b9c2494bca6a?ixlib=rb-4.0.3" alt="胶原蛋白双拼饭">
+                    </div>
+                    <div class="product-info">
+                        <h4>胶原蛋白双拼饭</h4>
+                        <p>猪脚与猪手双拼组合，精华胶原蛋白完美保留，美容养颜，最佳女性首选。</p>
+                        <div class="price">¥46</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 产品代言人 -->
+    <section class="models-section">
+        <div class="models-overlay"></div>
+        <div class="container">
+            <div class="models-content">
+                <h3>人气推荐，品质之选</h3>
+                <p>"尝遍城市美食，辉哥牌猪脚饭仍是我心中无法替代的美味。精致的菜品源自对味道的坚持，给忙碌一天的人们带来最温暖的慰藉。"</p>
+                <p>—— 美食博主林小姐  辉哥牌猪脚饭品牌体验官</p>
+                <a href="#" class="btn">查看更多推荐</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 顾客评价 -->
+    <section class="testimonials">
+        <div class="container">
+            <h3 class="section-title">顾客评价</h3>
+            <div class="testimonial-cards">
+                <!-- 评价1 -->
+                <div class="testimonial-card">
+                    <p class="testimonial-text">辉哥猪脚饭果然名不虚传！猪脚炖得入口即化，卤汁也很入味，搭配的酸菜特解腻，还有分量超足，一碗下去太满足了。</p>
+                    <div class="customer-info">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3" alt="王女士" class="customer-avatar">
+                        <div class="customer-details">
+                            <h4>王女士</h4>
+                            <p>美食爱好者</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 评价2 -->
+                <div class="testimonial-card">
+                    <p class="testimonial-text">第一次尝试就爱上了，猪脚处理得很干净，没有一点异味。胶原蛋白满满，感觉自己吃完美容养颜了，会无限回购！</p>
+                    <div class="customer-info">
+                        <img src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?ixlib=rb-4.0.3" alt="张小姐" class="customer-avatar">
+                        <div class="customer-details">
+                            <h4>张小姐</h4>
+                            <p>健康养生达人</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 评价3 -->
+                <div class="testimonial-card">
+                    <p class="testimonial-text">带朋友一起吃，大家都赞不绝口。门店环境也很干净舒适，服务热情。尤其要赞一下他们的套餐搭配，配菜和汤品都很讲究。</p>
+                    <div class="customer-info">
+                        <img src="https://images.unsplash.com/photo-1551835319-3177587c92c5?ixlib=rb-4.0.3" alt="李先生" class="customer-avatar">
+                        <div class="customer-details">
+                            <h4>李先生</h4>
+                            <p>公司职员</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 底部信息 -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>关于辉哥牌猪脚饭</h3>
+                    <p>成立于2008年，辉哥牌猪脚饭以传承经典美食为己任，结合现代健康饮食理念，致力于打造值得信赖的国民美食品牌。</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>门店地址</h3>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-map-marker-alt"></i> 广州市天河区美食街88号</li>
+                        <li><i class="fas fa-phone"></i> 020-88889999</li>
+                        <li><i class="fas fa-envelope"></i> service@huigefood.com</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>营业时间</h3>
+                    <ul class="opening-hours">
+                        <li><span>周一至周四</span><span>10:00-22:00</span></li>
+                        <li><span>周五至周六</span><span>10:00-24:00</span></li>
+                        <li><span>周日及节假日</span><span>10:00-22:30</span></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>关注我们</h3>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-weixin"></i></a>
+                        <a href="#"><i class="fab fa-weibo"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 辉哥牌猪脚饭 版权所有 | 用心做好每一份饭</p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- 回到顶部按钮 -->
+    <a href="#" id="back-to-top" style="position:fixed;bottom:20px;right:20px;background:var(--primary);color:white;width:50px;height:50px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.5rem;box-shadow:0 5px 15px rgba(0,0,0,0.2);">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</body>
+</html>
